@@ -58,6 +58,8 @@ common:
     url: https://azure.microsoft.com/en-us/pricing/details/event-grid/
   - type: SignUp
     url: https://azure.microsoft.com/en-us/free/
+  - type: LLMsTxt
+    url: https://azure.microsoft.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
