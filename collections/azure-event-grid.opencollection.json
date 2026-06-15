@@ -1,0 +1,245 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Event Grid Publisher API",
+    "version": "2018-01-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Publish",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Publish events to a topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{topic-endpoint}/api/events",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "aeg-sas-key",
+              "value": "{{aeg-sas-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publish a batch of Event Grid events or CloudEvents to a topic or domain.\nThe request body is an array; the schema depends on whether the topic is\nconfigured for `EventGridSchema`, `CloudEventSchemaV1_0`, or a custom schema.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Namespace Topics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Publish CloudEvents to a namespace topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{topic-endpoint}/topics/:topicName:publish",
+            "params": [
+              {
+                "name": "topicName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "aeg-sas-key",
+              "value": "{{aeg-sas-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publish CloudEvents to a namespace topic"
+        },
+        {
+          "info": {
+            "name": "Receive a batch of CloudEvents from a namespace topic subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{topic-endpoint}/topics/:topicName/subscriptions/:subscriptionName:receive",
+            "params": [
+              {
+                "name": "topicName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "maxEvents",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxWaitTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "aeg-sas-key",
+              "value": "{{aeg-sas-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Receive a batch of CloudEvents from a namespace topic subscription"
+        },
+        {
+          "info": {
+            "name": "Acknowledge events from a namespace topic subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{topic-endpoint}/topics/:topicName/subscriptions/:subscriptionName:acknowledge",
+            "params": [
+              {
+                "name": "topicName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "aeg-sas-key",
+              "value": "{{aeg-sas-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Acknowledge events from a namespace topic subscription"
+        },
+        {
+          "info": {
+            "name": "Release locked events back to the queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{topic-endpoint}/topics/:topicName/subscriptions/:subscriptionName:release",
+            "params": [
+              {
+                "name": "topicName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "aeg-sas-key",
+              "value": "{{aeg-sas-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Release locked events back to the queue"
+        },
+        {
+          "info": {
+            "name": "Reject (dead-letter) locked events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{topic-endpoint}/topics/:topicName/subscriptions/:subscriptionName:reject",
+            "params": [
+              {
+                "name": "topicName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "aeg-sas-key",
+              "value": "{{aeg-sas-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Reject (dead-letter) locked events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
