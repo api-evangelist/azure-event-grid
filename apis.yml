@@ -56,9 +56,9 @@ common:
     url: https://learn.microsoft.com/en-us/azure/event-grid/
   - type: Pricing
     url: https://azure.microsoft.com/en-us/pricing/details/event-grid/
-  - type: SignUp
+  - type: Signup
     url: https://azure.microsoft.com/en-us/free/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://azure.microsoft.com/llms.txt
 maintainers:
   - FN: Kin Lane
