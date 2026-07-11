@@ -50,6 +50,12 @@ apis:
         url: https://learn.microsoft.com/en-us/rest/api/eventgrid/dataplane/
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/azure-event-grid-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/azure-event-grid-domain-security.yml
+  - type: Authentication
+    url: authentication/azure-event-grid-authentication.yml
   - type: OAuthScopes
     url: scopes/azure-event-grid-scopes.yml
   - type: Website
