@@ -50,6 +50,8 @@ apis:
         url: https://learn.microsoft.com/en-us/rest/api/eventgrid/dataplane/
 
 common:
+  - type: OAuthScopes
+    url: scopes/azure-event-grid-scopes.yml
   - type: Website
     url: https://azure.microsoft.com/en-us/products/event-grid/
   - type: Documentation
