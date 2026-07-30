@@ -10,7 +10,19 @@ description: >-
   APIs and Azure SDKs use Microsoft Entra ID OAuth 2.0 bearer tokens or
   shared-access keys for authentication.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/azure-event-grid.png
 tags:
   - Eventing
   - Event Driven
@@ -26,29 +38,47 @@ created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.19'
 apis:
-  - aid: azure-event-grid:publisher-api
-    name: Azure Event Grid Publisher API
-    description: >-
-      Data-plane REST API for publishing events and CloudEvents to Event Grid
-      topics and domains, and for managing namespace topics, subscriptions,
-      and event delivery. Authentication uses Microsoft Entra ID OAuth 2.0
-      bearer tokens or shared-access keys via the aeg-sas-key header.
-    humanURL: https://learn.microsoft.com/en-us/rest/api/eventgrid/
-    baseURL: https://{topic-endpoint}.{region}.eventgrid.azure.net
-    tags:
-      - Event Grid
-      - Publishing
-      - CloudEvents
-      - Webhooks
-      - Azure
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/rest/api/eventgrid/
-      - type: Control Plane API
-        url: https://learn.microsoft.com/en-us/rest/api/eventgrid/controlplane-version2025-02-15/
-      - type: Data Plane API
-        url: https://learn.microsoft.com/en-us/rest/api/eventgrid/dataplane/
-
+- aid: azure-event-grid:publisher-api
+  name: Azure Event Grid Publisher API
+  description: >-
+    Data-plane REST API for publishing events and CloudEvents to Event Grid topics and domains, and for
+    managing namespace topics, subscriptions, and event delivery. Authentication uses Microsoft Entra
+    ID OAuth 2.0 bearer tokens or shared-access keys via the aeg-sas-key header.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/eventgrid/
+  baseURL: https://{topic-endpoint}.{region}.eventgrid.azure.net
+  tags:
+  - Event Grid
+  - Publishing
+  - CloudEvents
+  - Webhooks
+  - Azure
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/eventgrid/
+  - type: Control Plane API
+    url: https://learn.microsoft.com/en-us/rest/api/eventgrid/controlplane-version2025-02-15/
+  - type: Data Plane API
+    url: https://learn.microsoft.com/en-us/rest/api/eventgrid/dataplane/
+- aid: azure-event-grid:azure-event-grid-namespace-topics-api
+  name: Azure Event Grid Namespace Topics API
+  description: Namespace topic publish, receive, acknowledge
+  humanURL: https://learn.microsoft.com/en-us/rest/api/eventgrid/
+  baseURL: https://{topic-endpoint}.{region}.eventgrid.azure.net
+  tags:
+  - Namespace Topics
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-event-grid-namespace-topics-api-openapi.yml
+- aid: azure-event-grid:azure-event-grid-publish-api
+  name: Azure Event Grid Publish API
+  description: Publish events to a topic
+  humanURL: https://learn.microsoft.com/en-us/rest/api/eventgrid/
+  baseURL: https://{topic-endpoint}.{region}.eventgrid.azure.net
+  tags:
+  - Publish
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-event-grid-publish-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/azure-event-grid-agentic-access.yml
