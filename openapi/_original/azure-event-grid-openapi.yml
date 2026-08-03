@@ -1,0 +1,243 @@
+openapi: 3.1.0
+info:
+  title: Azure Event Grid Publisher API
+  version: '2018-01-01'
+  description: |
+    Data-plane REST API for publishing events to Azure Event Grid topics, domains,
+    and namespace topics. Supports the Event Grid event schema, the CloudEvents 1.0
+    schema, and custom schemas. Authentication is via Microsoft Entra ID OAuth 2.0
+    bearer tokens or the topic's shared-access key sent in the `aeg-sas-key` header
+    (or a SAS token in the `aeg-sas-token` header).
+  contact:
+    name: Azure Event Grid
+    url: https://learn.microsoft.com/en-us/rest/api/eventgrid/
+servers:
+  - url: https://{topic-endpoint}
+    description: Event Grid topic or domain endpoint (e.g. https://my-topic.eastus-1.eventgrid.azure.net)
+    variables:
+      topic-endpoint:
+        default: my-topic.eastus-1.eventgrid.azure.net
+        description: Topic or domain endpoint host
+tags:
+  - name: Publish
+    description: Publish events to a topic
+  - name: Namespace Topics
+    description: Namespace topic publish, receive, acknowledge
+paths:
+  /api/events:
+    post:
+      summary: Publish events to a topic
+      description: |
+        Publish a batch of Event Grid events or CloudEvents to a topic or domain.
+        The request body is an array; the schema depends on whether the topic is
+        configured for `EventGridSchema`, `CloudEventSchemaV1_0`, or a custom schema.
+      operationId: publishEvents
+      tags: [Publish]
+      parameters:
+        - { in: query, name: api-version, schema: { type: string, default: '2018-01-01' } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: array
+                  items: { $ref: '#/components/schemas/EventGridEvent' }
+                - type: array
+                  items: { $ref: '#/components/schemas/CloudEvent' }
+          application/cloudevents-batch+json:
+            schema:
+              type: array
+              items: { $ref: '#/components/schemas/CloudEvent' }
+          application/cloudevents+json:
+            schema: { $ref: '#/components/schemas/CloudEvent' }
+      responses:
+        '200':
+          description: Events accepted
+      security:
+        - sasKey: []
+        - sasToken: []
+        - entra: []
+  /topics/{topicName}:publish:
+    post:
+      summary: Publish CloudEvents to a namespace topic
+      operationId: publishToNamespaceTopic
+      tags: [Namespace Topics]
+      parameters:
+        - { in: path, name: topicName, required: true, schema: { type: string } }
+        - { in: query, name: api-version, schema: { type: string, default: '2023-11-01' } }
+      requestBody:
+        required: true
+        content:
+          application/cloudevents+json:
+            schema: { $ref: '#/components/schemas/CloudEvent' }
+          application/cloudevents-batch+json:
+            schema:
+              type: array
+              items: { $ref: '#/components/schemas/CloudEvent' }
+      responses:
+        '200':
+          description: Published
+      security:
+        - sasKey: []
+        - entra: []
+  /topics/{topicName}/subscriptions/{subscriptionName}:receive:
+    post:
+      summary: Receive a batch of CloudEvents from a namespace topic subscription
+      operationId: receiveEvents
+      tags: [Namespace Topics]
+      parameters:
+        - { in: path, name: topicName, required: true, schema: { type: string } }
+        - { in: path, name: subscriptionName, required: true, schema: { type: string } }
+        - { in: query, name: maxEvents, schema: { type: integer } }
+        - { in: query, name: maxWaitTime, schema: { type: integer } }
+        - { in: query, name: api-version, schema: { type: string, default: '2023-11-01' } }
+      responses:
+        '200':
+          description: Receive result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        brokerProperties:
+                          type: object
+                          properties:
+                            lockToken: { type: string }
+                            deliveryCount: { type: integer }
+                        event: { $ref: '#/components/schemas/CloudEvent' }
+      security:
+        - sasKey: []
+        - entra: []
+  /topics/{topicName}/subscriptions/{subscriptionName}:acknowledge:
+    post:
+      summary: Acknowledge events from a namespace topic subscription
+      operationId: acknowledgeEvents
+      tags: [Namespace Topics]
+      parameters:
+        - { in: path, name: topicName, required: true, schema: { type: string } }
+        - { in: path, name: subscriptionName, required: true, schema: { type: string } }
+        - { in: query, name: api-version, schema: { type: string, default: '2023-11-01' } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [lockTokens]
+              properties:
+                lockTokens:
+                  type: array
+                  items: { type: string }
+      responses:
+        '200':
+          description: Acknowledge result
+          content:
+            application/json:
+              schema: { type: object }
+      security:
+        - sasKey: []
+        - entra: []
+  /topics/{topicName}/subscriptions/{subscriptionName}:release:
+    post:
+      summary: Release locked events back to the queue
+      operationId: releaseEvents
+      tags: [Namespace Topics]
+      parameters:
+        - { in: path, name: topicName, required: true, schema: { type: string } }
+        - { in: path, name: subscriptionName, required: true, schema: { type: string } }
+        - { in: query, name: api-version, schema: { type: string, default: '2023-11-01' } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [lockTokens]
+              properties:
+                lockTokens:
+                  type: array
+                  items: { type: string }
+      responses:
+        '200':
+          description: Release result
+      security:
+        - sasKey: []
+        - entra: []
+  /topics/{topicName}/subscriptions/{subscriptionName}:reject:
+    post:
+      summary: Reject (dead-letter) locked events
+      operationId: rejectEvents
+      tags: [Namespace Topics]
+      parameters:
+        - { in: path, name: topicName, required: true, schema: { type: string } }
+        - { in: path, name: subscriptionName, required: true, schema: { type: string } }
+        - { in: query, name: api-version, schema: { type: string, default: '2023-11-01' } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [lockTokens]
+              properties:
+                lockTokens:
+                  type: array
+                  items: { type: string }
+      responses:
+        '200':
+          description: Reject result
+      security:
+        - sasKey: []
+        - entra: []
+components:
+  securitySchemes:
+    sasKey:
+      type: apiKey
+      in: header
+      name: aeg-sas-key
+      description: Topic shared-access key
+    sasToken:
+      type: apiKey
+      in: header
+      name: aeg-sas-token
+      description: Topic shared-access signature token
+    entra:
+      type: oauth2
+      description: Microsoft Entra ID OAuth 2.0 bearer token
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            https://eventgrid.azure.net/.default: Publish/receive Event Grid events
+  schemas:
+    EventGridEvent:
+      type: object
+      required: [id, subject, data, eventType, eventTime, dataVersion]
+      properties:
+        id: { type: string }
+        topic: { type: string }
+        subject: { type: string }
+        data: {}
+        eventType: { type: string }
+        eventTime: { type: string, format: date-time }
+        metadataVersion: { type: string }
+        dataVersion: { type: string }
+    CloudEvent:
+      type: object
+      required: [id, source, type, specversion]
+      properties:
+        id: { type: string }
+        source: { type: string, format: uri }
+        type: { type: string }
+        specversion: { type: string, enum: ['1.0'] }
+        time: { type: string, format: date-time }
+        datacontenttype: { type: string }
+        subject: { type: string }
+        data: {}
+        data_base64: { type: string, format: byte }
