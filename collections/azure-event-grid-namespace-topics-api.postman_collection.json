@@ -1,0 +1,801 @@
+{
+  "item": [
+    {
+      "id": "598ce3e2-e65e-46f1-8a9d-11cd027a3372",
+      "name": "Namespace Topics",
+      "description": {
+        "content": "Namespace topic publish, receive, acknowledge",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1903cb34-1b21-4f13-9ab7-43127a9c2abf",
+          "name": "Publish CloudEvents to a namespace topic",
+          "request": {
+            "name": "Publish CloudEvents to a namespace topic",
+            "description": {},
+            "url": {
+              "path": [
+                "topics",
+                "{{topicName}}:publish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-11-01"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Topic or domain endpoint host",
+                  "type": "any",
+                  "value": "{{topic-endpoint}}",
+                  "key": "topic-endpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/cloudevents+json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "aeg-sas-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"source\": \"<uri>\",\n  \"type\": \"<string>\",\n  \"specversion\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"datacontenttype\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"data\": \"\",\n  \"data_base64\": \"<byte>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7bb35292-058d-4c3c-b575-cecdf5232af7",
+              "name": "Published",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topics",
+                    "{{topicName}}:publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-11-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Topic or domain endpoint host",
+                      "type": "any",
+                      "value": "{{topic-endpoint}}",
+                      "key": "topic-endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "aeg-sas-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"source\": \"<uri>\",\n  \"type\": \"<string>\",\n  \"specversion\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"datacontenttype\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"data\": \"\",\n  \"data_base64\": \"<byte>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4517358a-46f6-4671-97b6-f1e81d57fc21",
+          "name": "Receive a batch of CloudEvents from a namespace topic subscription",
+          "request": {
+            "name": "Receive a batch of CloudEvents from a namespace topic subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "topics",
+                ":topicName",
+                "subscriptions",
+                "{{subscriptionName}}:receive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "maxEvents",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxWaitTime",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-11-01"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "topicName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Topic or domain endpoint host",
+                  "type": "any",
+                  "value": "{{topic-endpoint}}",
+                  "key": "topic-endpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "aeg-sas-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3444a38f-387f-4a87-a047-461a0e4fefa5",
+              "name": "Receive result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topics",
+                    ":topicName",
+                    "subscriptions",
+                    "{{subscriptionName}}:receive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxEvents",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "maxWaitTime",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api-version",
+                      "value": "2023-11-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "topicName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Topic or domain endpoint host",
+                      "type": "any",
+                      "value": "{{topic-endpoint}}",
+                      "key": "topic-endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "aeg-sas-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"brokerProperties\": {\n        \"lockToken\": \"string\",\n        \"deliveryCount\": 2532\n      },\n      \"event\": {\n        \"id\": \"string\",\n        \"source\": \"http://KBXm.vizqp.Z.xmg1,njNMDk.Y,zZ2RDvVbedmDu,iyhqwQhCr9+txZla9v\",\n        \"type\": \"string\",\n        \"specversion\": \"1.0\",\n        \"time\": \"2014-10-02T19:42:45.689Z\",\n        \"datacontenttype\": \"string\",\n        \"subject\": \"string\",\n        \"data\": \"\",\n        \"data_base64\": \"string\"\n      }\n    },\n    {\n      \"brokerProperties\": {\n        \"lockToken\": \"string\",\n        \"deliveryCount\": 2968\n      },\n      \"event\": {\n        \"id\": \"string\",\n        \"source\": \"http://RlydxLxPKdWKrRzQIImNeCkshbX.gxczY+-T\",\n        \"type\": \"string\",\n        \"specversion\": \"1.0\",\n        \"time\": \"1951-12-10T04:07:35.545Z\",\n        \"datacontenttype\": \"string\",\n        \"subject\": \"string\",\n        \"data\": \"\",\n        \"data_base64\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a38de363-727f-43fa-9de2-291f7bac6001",
+          "name": "Acknowledge events from a namespace topic subscription",
+          "request": {
+            "name": "Acknowledge events from a namespace topic subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "topics",
+                ":topicName",
+                "subscriptions",
+                "{{subscriptionName}}:acknowledge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-11-01"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "topicName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Topic or domain endpoint host",
+                  "type": "any",
+                  "value": "{{topic-endpoint}}",
+                  "key": "topic-endpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "aeg-sas-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lockTokens\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30007c48-202a-4a74-bed8-c9c5939888e5",
+              "name": "Acknowledge result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topics",
+                    ":topicName",
+                    "subscriptions",
+                    "{{subscriptionName}}:acknowledge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-11-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "topicName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Topic or domain endpoint host",
+                      "type": "any",
+                      "value": "{{topic-endpoint}}",
+                      "key": "topic-endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "aeg-sas-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lockTokens\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a3823bf-6f2c-491f-a946-18af2af15594",
+          "name": "Release locked events back to the queue",
+          "request": {
+            "name": "Release locked events back to the queue",
+            "description": {},
+            "url": {
+              "path": [
+                "topics",
+                ":topicName",
+                "subscriptions",
+                "{{subscriptionName}}:release"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-11-01"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "topicName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Topic or domain endpoint host",
+                  "type": "any",
+                  "value": "{{topic-endpoint}}",
+                  "key": "topic-endpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "aeg-sas-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lockTokens\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a10f448-976a-4585-b272-5fae1f36f9d3",
+              "name": "Release result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topics",
+                    ":topicName",
+                    "subscriptions",
+                    "{{subscriptionName}}:release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-11-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "topicName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Topic or domain endpoint host",
+                      "type": "any",
+                      "value": "{{topic-endpoint}}",
+                      "key": "topic-endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "aeg-sas-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lockTokens\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3babf2f-0aec-4951-82b8-59d4488ef68f",
+          "name": "Reject (dead-letter) locked events",
+          "request": {
+            "name": "Reject (dead-letter) locked events",
+            "description": {},
+            "url": {
+              "path": [
+                "topics",
+                ":topicName",
+                "subscriptions",
+                "{{subscriptionName}}:reject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-11-01"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "topicName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Topic or domain endpoint host",
+                  "type": "any",
+                  "value": "{{topic-endpoint}}",
+                  "key": "topic-endpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "aeg-sas-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lockTokens\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7fbbe79-80c4-427e-9aa9-ef5c7e8c2522",
+              "name": "Reject result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topics",
+                    ":topicName",
+                    "subscriptions",
+                    "{{subscriptionName}}:reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-11-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "topicName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Topic or domain endpoint host",
+                      "type": "any",
+                      "value": "{{topic-endpoint}}",
+                      "key": "topic-endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "aeg-sas-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lockTokens\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Topic or domain endpoint host",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-topic.eastus-1.eventgrid.azure.net",
+      "key": "topic-endpoint"
+    },
+    {
+      "type": "string",
+      "value": "https://{{topic-endpoint}}",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "topicName"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "subscriptionName"
+    }
+  ],
+  "info": {
+    "_postman_id": "71d422f1-0c37-4a2c-abab-514079dc97c0",
+    "name": "Azure Event Grid Publisher Namespace Topics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Data-plane REST API for publishing events to Azure Event Grid topics, domains,\nand namespace topics. Supports the Event Grid event schema, the CloudEvents 1.0\nschema, and custom schemas. Authentication is via Microsoft Entra ID OAuth 2.0\nbearer tokens or the topic's shared-access key sent in the `aeg-sas-key` header\n(or a SAS token in the `aeg-sas-token` header).\n\n\nContact Support:\n Name: Azure Event Grid",
+      "type": "text/plain"
+    }
+  }
+}

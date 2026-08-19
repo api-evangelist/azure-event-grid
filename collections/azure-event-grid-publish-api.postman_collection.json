@@ -1,0 +1,175 @@
+{
+  "item": [
+    {
+      "id": "12a22736-2e0c-4dcc-869a-30f8a6caea0e",
+      "name": "Publish",
+      "description": {
+        "content": "Publish events to a topic",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e18cf4b-fda8-4648-9b6d-95316450b2f7",
+          "name": "Publish events to a topic",
+          "request": {
+            "name": "Publish events to a topic",
+            "description": {
+              "content": "Publish a batch of Event Grid events or CloudEvents to a topic or domain.\nThe request body is an array; the schema depends on whether the topic is\nconfigured for `EventGridSchema`, `CloudEventSchemaV1_0`, or a custom schema.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2018-01-01"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Topic or domain endpoint host",
+                  "type": "any",
+                  "value": "{{topic-endpoint}}",
+                  "key": "topic-endpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "aeg-sas-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"data\": \"\",\n    \"eventType\": \"<string>\",\n    \"eventTime\": \"<dateTime>\",\n    \"dataVersion\": \"<string>\",\n    \"topic\": \"<string>\",\n    \"metadataVersion\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"data\": \"\",\n    \"eventType\": \"<string>\",\n    \"eventTime\": \"<dateTime>\",\n    \"dataVersion\": \"<string>\",\n    \"topic\": \"<string>\",\n    \"metadataVersion\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd7eac8a-9635-4aa9-a629-6caad9db6209",
+              "name": "Events accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2018-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Topic or domain endpoint host",
+                      "type": "any",
+                      "value": "{{topic-endpoint}}",
+                      "key": "topic-endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "aeg-sas-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"subject\": \"string\",\n    \"data\": \"\",\n    \"eventType\": \"string\",\n    \"eventTime\": \"1965-12-16T20:06:49.872Z\",\n    \"dataVersion\": \"string\",\n    \"topic\": \"string\",\n    \"metadataVersion\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"subject\": \"string\",\n    \"data\": \"\",\n    \"eventType\": \"string\",\n    \"eventTime\": \"1973-01-14T12:07:21.687Z\",\n    \"dataVersion\": \"string\",\n    \"topic\": \"string\",\n    \"metadataVersion\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Topic or domain endpoint host",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-topic.eastus-1.eventgrid.azure.net",
+      "key": "topic-endpoint"
+    },
+    {
+      "type": "string",
+      "value": "https://{{topic-endpoint}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4026fe2a-2a6c-4a85-9714-524ac55b96a9",
+    "name": "Azure Event Grid Publisher Namespace Topics Publish API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Data-plane REST API for publishing events to Azure Event Grid topics, domains,\nand namespace topics. Supports the Event Grid event schema, the CloudEvents 1.0\nschema, and custom schemas. Authentication is via Microsoft Entra ID OAuth 2.0\nbearer tokens or the topic's shared-access key sent in the `aeg-sas-key` header\n(or a SAS token in the `aeg-sas-token` header).\n\n\nContact Support:\n Name: Azure Event Grid",
+      "type": "text/plain"
+    }
+  }
+}

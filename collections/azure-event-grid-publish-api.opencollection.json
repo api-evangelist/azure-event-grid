@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Event Grid Publisher Namespace Topics Publish API",
+    "version": "2018-01-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Publish",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Publish events to a topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{topic-endpoint}/api/events",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "aeg-sas-key",
+              "value": "{{aeg-sas-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publish a batch of Event Grid events or CloudEvents to a topic or domain.\nThe request body is an array; the schema depends on whether the topic is\nconfigured for `EventGridSchema`, `CloudEventSchemaV1_0`, or a custom schema.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
