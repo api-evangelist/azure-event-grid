@@ -25,6 +25,15 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/azure-event-grid.png
 tags:
   - Eventing
+  - Event-Driven
+  - Pub-Sub
+  - Messaging
+  - Webhook
+  - CloudEvents
+  - Cloud
+  - Azure
+tags_raw:
+  - Eventing
   - Event Driven
   - Pub Sub
   - Messaging
@@ -47,6 +56,12 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/eventgrid/
   baseURL: https://{topic-endpoint}.{region}.eventgrid.azure.net
   tags:
+  - Event Grid
+  - Publishing
+  - CloudEvents
+  - Webhook
+  - Azure
+  tags_raw:
   - Event Grid
   - Publishing
   - CloudEvents
