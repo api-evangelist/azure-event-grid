@@ -1,14 +1,6 @@
 aid: azure-event-grid
 name: Azure Event Grid
-description: >-
-  Azure Event Grid is a fully managed event routing service from Microsoft
-  Azure that enables event-driven, reactive programming by ingesting events
-  from Azure services, SaaS providers, and custom sources and delivering them
-  to subscribers such as Azure Functions, Logic Apps, webhooks, and event
-  hubs. It supports both Event Grid topics and the MQTT/CloudEvents-based
-  Event Grid namespaces for IoT and pub-sub workloads. The Event Grid REST
-  APIs and Azure SDKs use Microsoft Entra ID OAuth 2.0 bearer tokens or
-  shared-access keys for authentication.
+description: Azure Event Grid is a fully managed event routing service from Microsoft Azure that enables event-driven, reactive programming by ingesting events from Azure services, SaaS providers, and custom sources and delivering them to subscribers such as Azure Functions, Logic Apps, webhooks, and event hubs. It supports both Event Grid topics and the MQTT/CloudEvents-based Event Grid namespaces for IoT and pub-sub workloads. The Event Grid REST APIs and Azure SDKs use Microsoft Entra ID OAuth 2.0 bearer tokens or shared-access keys for authentication.
 type: Index
 deliveryModel:
   model: saas
@@ -36,35 +28,31 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/azure-event-grid.png
 tags:
-  - Eventing
-  - Event-Driven
-  - Pub-Sub
-  - Messaging
-  - Webhook
-  - CloudEvents
-  - Cloud
-  - Azure
+- Eventing
+- Event-Driven
+- Pub-Sub
+- Messaging
+- Webhook
+- CloudEvents
+- Cloud
+- Azure
 tags_raw:
-  - Eventing
-  - Event Driven
-  - Pub Sub
-  - Messaging
-  - Webhooks
-  - CloudEvents
-  - Cloud
-  - Azure
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/azure-event-grid/refs/heads/main/apis.yml
+- Eventing
+- Event Driven
+- Pub Sub
+- Messaging
+- Webhooks
+- CloudEvents
+- Cloud
+- Azure
+url: https://raw.githubusercontent.com/api-evangelist/azure-event-grid/refs/heads/main/apis.yml
 created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.23'
 apis:
 - aid: azure-event-grid:publisher-api
   name: Azure Event Grid Publisher API
-  description: >-
-    Data-plane REST API for publishing events and CloudEvents to Event Grid topics and domains, and for
-    managing namespace topics, subscriptions, and event delivery. Authentication uses Microsoft Entra
-    ID OAuth 2.0 bearer tokens or shared-access keys via the aeg-sas-key header.
+  description: Data-plane REST API for publishing events and CloudEvents to Event Grid topics and domains, and for managing namespace topics, subscriptions, and event delivery. Authentication uses Microsoft Entra ID OAuth 2.0 bearer tokens or shared-access keys via the aeg-sas-key header.
   humanURL: https://learn.microsoft.com/en-us/rest/api/eventgrid/
   baseURL: https://{topic-endpoint}.{region}.eventgrid.azure.net
   tags:
@@ -106,29 +94,64 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/azure-event-grid-publish-api-openapi.yml
-common:
-  - type: AgenticAccess
-    url: agentic-access/azure-event-grid-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/azure-event-grid-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/azure-event-grid-domain-security.yml
-  - type: Authentication
-    url: authentication/azure-event-grid-authentication.yml
-  - type: OAuthScopes
-    url: scopes/azure-event-grid-scopes.yml
-  - type: Website
-    url: https://azure.microsoft.com/en-us/products/event-grid/
+- aid: microsoft-azure-event-grid:microsoft-azure-event-grid-operations-api
+  name: Azure Event Grid Operations API
+  description: Operations operations
+  humanURL: https://learn.microsoft.com/en-us/rest/api/eventgrid/
+  baseURL: https://{topic}.{region}.eventgrid.azure.net/
+  tags: []
+  tags_raw:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-event-grid-operations-api-openapi.yml
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/azure/event-grid/
-  - type: Pricing
-    url: https://azure.microsoft.com/en-us/pricing/details/event-grid/
-  - type: Signup
-    url: https://azure.microsoft.com/en-us/free/
-  - type: LlmsText
-    url: https://azure.microsoft.com/llms.txt
+    url: https://learn.microsoft.com/en-us/rest/api/eventgrid/
+- aid: microsoft-azure-event-grid:microsoft-azure-event-grid-topics-api
+  name: Azure Event Grid Topics API
+  description: Topics operations
+  humanURL: https://learn.microsoft.com/en-us/rest/api/eventgrid/
+  baseURL: https://{topic}.{region}.eventgrid.azure.net/
+  tags:
+  - Topics
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-event-grid-topics-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/eventgrid/
+common:
+- type: GitHubOrganization
+  url: https://github.com/Azure
+- type: Portal
+  url: https://portal.azure.com/
+- type: TermsOfService
+  url: https://www.microsoft.com/en-us/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://privacy.microsoft.com/en-us/privacystatement
+- type: Support
+  url: https://support.microsoft.com/
+- type: AgenticAccess
+  url: agentic-access/azure-event-grid-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/azure-event-grid-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/azure-event-grid-domain-security.yml
+- type: Authentication
+  url: authentication/azure-event-grid-authentication.yml
+- type: OAuthScopes
+  url: scopes/azure-event-grid-scopes.yml
+- type: Website
+  url: https://azure.microsoft.com/en-us/products/event-grid/
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/azure/event-grid/
+- type: Pricing
+  url: https://azure.microsoft.com/en-us/pricing/details/event-grid/
+- type: Signup
+  url: https://azure.microsoft.com/en-us/free/
+- type: LlmsText
+  url: https://azure.microsoft.com/llms.txt
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 x-parent: microsoft-azure
 x-relationship: product
