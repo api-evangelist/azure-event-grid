@@ -45,7 +45,7 @@ tags_raw:
 - CloudEvents
 - Cloud
 - Azure
-url: https://raw.githubusercontent.com/api-evangelist/azure-event-grid/refs/heads/main/apis.yml
+url: https://azure.microsoft.com/en-us/products/event-grid/
 created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.23'
