@@ -11,6 +11,10 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "azure-event-grid-namespace-topics-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "azure-event-grid-publish-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
