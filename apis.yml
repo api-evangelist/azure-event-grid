@@ -113,6 +113,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/eventgrid/
   baseURL: https://{topic}.{region}.eventgrid.azure.net/
   tags:
+  - Topic
+  tags_raw:
   - Topics
   properties:
   - type: OpenAPI
