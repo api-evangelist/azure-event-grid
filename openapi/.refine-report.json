@@ -1,20 +1,29 @@
 {
   "provider": "azure-event-grid",
   "sources": [
-    "azure-event-grid-namespace-topics-api-openapi.yml",
-    "azure-event-grid-publish-api-openapi.yml"
+    "_original/azure-event-grid-openapi.yml",
+    "azure-event-grid-operations-api-openapi.yml",
+    "azure-event-grid-topics-api-openapi.yml"
   ],
   "outputs": [
     "azure-event-grid-namespace-topics-api-openapi.yml",
-    "azure-event-grid-publish-api-openapi.yml"
+    "azure-event-grid-publish-api-openapi.yml",
+    "azure-event-grid-operations-api-openapi.yml",
+    "azure-event-grid-topics-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "azure-event-grid-operations-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /providers/Microsoft.EventGrid/operations get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "azure-event-grid-topics-api-openapi.yml: previously refined output kept for 6 operation(s) no archived document covers (e.g. /subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/topics get, /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics get, /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{name} delete); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
   "notes": [
-    "azure-event-grid-namespace-topics-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "azure-event-grid-publish-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "azure-event-grid-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "azure-event-grid-namespace-topics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-event-grid-publish-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

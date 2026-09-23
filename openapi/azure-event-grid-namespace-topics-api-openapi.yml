@@ -10,9 +10,7 @@ info:
 
     bearer tokens or the topic''s shared-access key sent in the `aeg-sas-key` header
 
-    (or a SAS token in the `aeg-sas-token` header).
-
-    '
+    (or a SAS token in the `aeg-sas-token` header).'
   contact:
     name: Azure Event Grid
     url: https://learn.microsoft.com/en-us/rest/api/eventgrid/

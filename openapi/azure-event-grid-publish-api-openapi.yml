@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Azure Event Grid Publisher Namespace Topics Publish API
+  title: Azure Event Grid Publisher Publish API
   version: '2018-01-01'
   description: 'Data-plane REST API for publishing events to Azure Event Grid topics, domains,
 
@@ -10,9 +10,7 @@ info:
 
     bearer tokens or the topic''s shared-access key sent in the `aeg-sas-key` header
 
-    (or a SAS token in the `aeg-sas-token` header).
-
-    '
+    (or a SAS token in the `aeg-sas-token` header).'
   contact:
     name: Azure Event Grid
     url: https://learn.microsoft.com/en-us/rest/api/eventgrid/
@@ -34,9 +32,7 @@ paths:
 
         The request body is an array; the schema depends on whether the topic is
 
-        configured for `EventGridSchema`, `CloudEventSchemaV1_0`, or a custom schema.
-
-        '
+        configured for `EventGridSchema`, `CloudEventSchemaV1_0`, or a custom schema.'
       operationId: publishEvents
       tags:
       - Publish
