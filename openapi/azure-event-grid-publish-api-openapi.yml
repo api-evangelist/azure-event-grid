@@ -71,6 +71,32 @@ paths:
       - entra: []
 components:
   schemas:
+    EventGridEvent:
+      type: object
+      required:
+      - id
+      - subject
+      - data
+      - eventType
+      - eventTime
+      - dataVersion
+      properties:
+        id:
+          type: string
+        topic:
+          type: string
+        subject:
+          type: string
+        data: {}
+        eventType:
+          type: string
+        eventTime:
+          type: string
+          format: date-time
+        metadataVersion:
+          type: string
+        dataVersion:
+          type: string
     CloudEvent:
       type: object
       required:
@@ -101,32 +127,6 @@ components:
         data_base64:
           type: string
           format: byte
-    EventGridEvent:
-      type: object
-      required:
-      - id
-      - subject
-      - data
-      - eventType
-      - eventTime
-      - dataVersion
-      properties:
-        id:
-          type: string
-        topic:
-          type: string
-        subject:
-          type: string
-        data: {}
-        eventType:
-          type: string
-        eventTime:
-          type: string
-          format: date-time
-        metadataVersion:
-          type: string
-        dataVersion:
-          type: string
   securitySchemes:
     sasKey:
       type: apiKey
