@@ -1,4 +1,4 @@
-# Azure Event Grid (azure-event-grid)
+# Azure Event Grid
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,62 +66,115 @@
 
 Azure Event Grid is a fully managed event routing service from Microsoft Azure that enables event-driven, reactive programming by ingesting events from Azure services, SaaS providers, and custom sources and delivering them to subscribers such as Azure Functions, Logic Apps, webhooks, and event hubs. It supports both Event Grid topics and the MQTT/CloudEvents-based Event Grid namespaces for IoT and pub-sub workloads. The Event Grid REST APIs and Azure SDKs use Microsoft Entra ID OAuth 2.0 bearer tokens or shared-access keys for authentication.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/azure-event-grid/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/azure-event-grid/refs/heads/main/apis.yml)
+**Areas:** Eventing · Event-Driven · Pub/Sub · Messaging · Webhook · CloudEvents · Cloud · Microsoft Azure
 
-## Scope
+## Azure Event Grid on APIs.io
 
-- **Type:** Index
+Everything profiled for Azure Event Grid is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/azure-event-grid/](https://apis.io/providers/azure-event-grid/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Eventing
-- Event Driven
-- Pub Sub
-- Messaging
-- Webhooks
-- CloudEvents
-- Cloud
-- Azure
+- [Azure Event Grid Publisher API](https://apis.io/apis/azure-event-grid/publisher-api/) — Data-plane REST API for publishing events and CloudEvents to Event Grid topics and domains, and for managing namespace topics, subscriptions, and event…
+- [Azure Event Grid Namespace Topics API](https://apis.io/apis/azure-event-grid/azure-event-grid-namespace-topics-api/) — Namespace topic publish, receive, acknowledge
+- [Azure Event Grid Publish API](https://apis.io/apis/azure-event-grid/azure-event-grid-publish-api/) — Publish events to a topic
+- [Azure Event Grid Operations API](https://apis.io/apis/azure-event-grid/microsoft-azure-event-grid-operations-api/) — Operations operations
+- [Azure Event Grid Topics API](https://apis.io/apis/azure-event-grid/microsoft-azure-event-grid-topics-api/) — Topics operations
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-05-11
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Azure Event Grid Publisher API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Data-plane REST API for publishing events and CloudEvents to Event Grid topics and domains, and for managing namespace topics, subscriptions, and event delivery. Authentication uses Microsoft Entra ID OAuth 2.0 bearer tokens or shared-access keys via the aeg-sas-key header.
+- [Azure Event Grid Agentic Access](https://apis.io/agentic-access/azure-event-grid/azure-event-grid-agentic-access/)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/rest/api/eventgrid/](https://learn.microsoft.com/en-us/rest/api/eventgrid/)
-- **Base URL:** `https://{topic-endpoint}.{region}.eventgrid.azure.net`
+#### Collections (3)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Event Grid
-- Publishing
-- CloudEvents
-- Webhooks
-- Azure
+- [Azure Event Grid Publisher API](https://apis.io/collections/azure-event-grid/open-azure-event-grid/)
+- [Azure Event Grid Publisher Namespace Topics API](https://apis.io/collections/azure-event-grid/open-azure-event-grid-namespace-topics-api/)
+- [Azure Event Grid Publisher Namespace Topics Publish API](https://apis.io/collections/azure-event-grid/open-azure-event-grid-publish-api/)
 
-#### Properties
+#### Security (3)
 
-- [Documentation](https://learn.microsoft.com/en-us/rest/api/eventgrid/)
-- [Control  Plane  A P I](https://learn.microsoft.com/en-us/rest/api/eventgrid/controlplane-version2025-02-15/)
-- [Data  Plane  A P I](https://learn.microsoft.com/en-us/rest/api/eventgrid/dataplane/)
-- [Postman Collection](collections/azure-event-grid.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/azure-event-grid.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Azure Event Grid Authentication](https://apis.io/security/azure-event-grid/azure-event-grid-authentication/)
+- [Azure Event Grid Domain Security](https://apis.io/security/azure-event-grid/azure-event-grid-domain-security/)
+- [Azure Event Grid Vulnerability Disclosure](https://apis.io/security/azure-event-grid/azure-event-grid-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Azure Event Grid Scopes](https://apis.io/scopes/azure-event-grid/azure-event-grid-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://azure.microsoft.com/en-us/products/event-grid/)
 - [Documentation](https://learn.microsoft.com/en-us/azure/event-grid/)
 - [Pricing](https://azure.microsoft.com/en-us/pricing/details/event-grid/)
-- [Sign Up](https://azure.microsoft.com/en-us/free/)
-- [L L Ms Txt](https://azure.microsoft.com/llms.txt)
+- [Support](https://support.microsoft.com/)
+- [Terms of service](https://www.microsoft.com/en-us/legal/terms-of-use)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+- [GitHub](https://github.com/Azure)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 41.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 80.4 |
+| Contract quality | 45.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 44.7 |
+
+**Agent readiness 19.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/azure-event-grid/](https://apis.io/providers/azure-event-grid/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Azure Event Grid: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/azure-event-grid/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
